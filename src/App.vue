@@ -1,5 +1,5 @@
 <template>
-    <p id="app">Welcome to Vintage Archive Jungle!</p>
+    <p>Welcome to Vintage Archive Jungle!</p>
 </template>
 
 <script>
