@@ -1,0 +1,154 @@
+/* Thin (100) */
+@font-face {
+  font-family: "Creato Display";
+  src: url("/assets/fonts/Creato Display/CreatoDisplay-Thin.otf") format("opentype");
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Creato Display";
+  src: url("/assets/fonts/Creato Display/CreatoDisplay-ThinItalic.otf") format("opentype");
+  font-weight: 100;
+  font-style: italic;
+}
+
+/* Light (300) */
+@font-face {
+  font-family: "Creato Display";
+  src: url("/assets/fonts/Creato Display/CreatoDisplay-Light.otf") format("opentype");
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Creato Display";
+  src: url("/assets/fonts/Creato Display/CreatoDisplay-LightItalic.otf") format("opentype");
+  font-weight: 300;
+  font-style: italic;
+}
+
+/* Regular (400) */
+@font-face {
+  font-family: "Creato Display";
+  src: url("/assets/fonts/Creato Display/CreatoDisplay-Regular.otf") format("opentype");
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Creato Display";
+  src: url("/assets/fonts/Creato Display/CreatoDisplay-RegularItalic.otf") format("opentype");
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* Medium (500) */
+@font-face {
+  font-family: "Creato Display";
+  src: url("/assets/fonts/Creato Display/CreatoDisplay-Medium.otf") format("opentype");
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Creato Display";
+  src: url("/assets/fonts/Creato Display/CreatoDisplay-MediumItalic.otf") format("opentype");
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* Bold (700) */
+@font-face {
+  font-family: "Creato Display";
+  src: url("/assets/fonts/Creato Display/CreatoDisplay-Bold.otf") format("opentype");
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Creato Display";
+  src: url("/assets/fonts/Creato Display/CreatoDisplay-BoldItalic.otf") format("opentype");
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* ExtraBold (800) */
+@font-face {
+  font-family: "Creato Display";
+  src: url("/assets/fonts/Creato Display/CreatoDisplay-ExtraBold.otf") format("opentype");
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Creato Display";
+  src: url("/assets/fonts/Creato Display/CreatoDisplay-ExtraBoldItalic.otf") format("opentype");
+  font-weight: 800;
+  font-style: italic;
+}
+
+/* Black (900) */
+@font-face {
+  font-family: "Creato Display";
+  src: url("/assets/fonts/Creato Display/CreatoDisplay-Black.otf") format("opentype");
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Creato Display";
+  src: url("/assets/fonts/Creato Display/CreatoDisplay-BlackItalic.otf") format("opentype");
+  font-weight: 900;
+  font-style: italic;
+}
+
+*, 
+*::before, 
+*::after {
+  box-sizing: border-box;
+}
+
+html:root {
+  font-family: "Creato Display", sans-serif;
+  font-weight: 400;
+  font-size: 15px;
+  --first-color: #fffafa;
+  --second-color: #ffe0e0;
+  --third-color: #ffc0d0;
+  --fourth-color: #efdfbf;
+  background-color: var(--first-color);
+}
+
+small {
+    font-size: 0.75rem;
+    line-height: 150%;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 150%;
+}
+
+h6 {
+    font-size: 1.333rem;
+    line-height: 120%;
+}
+
+h5 {
+    font-size: 1.777rem;
+    line-height: 120%;
+}
+
+h4 {
+    font-size: 2.369rem;
+    line-height: 120%;
+}
+
+h3 {
+    font-size: 3.157rem;
+    line-height: 120%;
+}
+
+h2 {
+    font-size: 4.209rem;
+    line-height: 120%;
+}
+
+h1 {
+    font-size: 5.61rem;
+    line-height: 120%;
+}

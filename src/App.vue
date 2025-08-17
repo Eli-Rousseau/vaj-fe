@@ -1,5 +1,5 @@
 <template>
-    <p>Welcome to Vintage Archive Jungle!</p>
+    <router-view></router-view>
 </template>
 
 <script>
