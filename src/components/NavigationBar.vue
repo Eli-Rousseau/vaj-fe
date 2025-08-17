@@ -36,12 +36,12 @@ export default defineComponent({
     let navbarTop = 0;
     let transition = true;
     let position = "absolute";
+    let showShadow = true;
     let lastScrollPosition = 0;
     let throttling = false;
 
     const onScroll = () => {
-      const el = navbar.value;
-      if (!el) return;
+      if (!navbar.value) return;
 
       const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
 
@@ -51,27 +51,34 @@ export default defineComponent({
 
         transition = position !== "absolute";
         position = "absolute";
+        showShadow = true;
       } else {
         if (currentScrollPosition > lastScrollPosition) {
           // scrolling down
           transition = position !== "absolute";
-          const { top, height } = el.getBoundingClientRect();
+          position = "absolute";
+          const { top, height } = navbar.value.getBoundingClientRect();
           navbarTop = currentScrollPosition + Math.max(top, -height);
+          showShadow = -top > height ? false : true;
+
         } else {
           // scrolling up
-          const { top } = el.getBoundingClientRect();
+          const { top, height } = navbar.value.getBoundingClientRect();
+          showShadow = -top > height ? false : true;
           if (top >= 0) {
             navbarTop = 0;
             transition = position !== "fixed";
             position = "fixed";
+            showShadow = true;
           }
         }
         lastScrollPosition = currentScrollPosition;
       }
 
-      el.style.position = position;
-      el.style.top = `${navbarTop}px`;
-      el.style.transition = transition ? "none" : "100ms linear";
+      navbar.value.style.position = position;
+      navbar.value.style.top = `${navbarTop}px`;
+      navbar.value.style.transition = transition ? "none" : "100ms linear";
+      navbar.value.style["box-shadow"] = showShadow ? "0 2px 6px rgba(0,0,0,0.1)" : "none";
     };
 
     const onScrollThrottled = () => {
