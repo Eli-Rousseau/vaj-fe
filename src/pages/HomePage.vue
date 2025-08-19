@@ -2,6 +2,7 @@
   <div class="home__header--container">
     <NavigationBar />
   </div>
+  <div class="home__body--container"></div>
 </template>
 
 <script>
@@ -19,7 +20,14 @@ export default defineComponent({
 <style>
 .home__header--container {
   width: 100vw;
-  height: 1000vh;
+  height: 100vh;
   background-color: var(--second-color);
+  display: flex;
+  flex-direction: column;
+}
+.home__body--container {
+  width: 100vw;
+  height: 1000vh;
+  background-color: var(--third-color);
 }
 </style>

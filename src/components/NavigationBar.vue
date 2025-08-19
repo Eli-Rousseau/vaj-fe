@@ -1,7 +1,6 @@
 <template>
   <div ref="navbar" class="navbar--container">
-    <svg width="24" height="24" viewBox="0 0 18 28" fill="none"
-     xmlns="http://www.w3.org/2000/svg" class="navbar--dropdown">
+    <svg width="24" height="24" viewBox="0 0 18 28" fill="none" xmlns="http://www.w3.org/2000/svg" class="navbar--dropdown" @click="handleMenuClick">
       <rect y="5" width="18" height="2" fill="var(--first-color)"/>
       <rect y="10" width="18" height="2" fill="var(--first-color)"/>
       <rect y="15" width="18" height="2" fill="var(--first-color)"/>
@@ -11,8 +10,7 @@
         <label for="search"></label>
         <input type="text" id="search" autocomplete="off" class="navbar--searchbox_input" v-model="searchBoxQuery"/>
         <button type="submit" class="navbar--searchbox_icon">
-            <svg width="34" height="34" viewBox="0 0 25 25" fill="none" 
-             xmlns="http://www.w3.org/2000/svg">
+            <svg width="34" height="34" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                     fill-rule="evenodd"
                     clip-rule="evenodd"
@@ -23,10 +21,12 @@
         </button>
     </form>
   </div>
+  <div ref="navmenu" class="navmenu--container" v-if="showMenu">
+  </div>
 </template>
 
 <script>
-import { defineComponent, ref, onMounted, onUnmounted } from 'vue';
+import { defineComponent, ref, onMounted, onUnmounted, watch, nextTick } from 'vue';
 
 export default defineComponent({
   name: "NavigationBar",
@@ -102,11 +102,30 @@ export default defineComponent({
     const searchBoxQuery = ref("");
 
     const handleSearchBoxSubmit = function () {
-      console.log(searchBoxQuery.value);
       searchBoxQuery.value = "";
     }
 
-    return { navbar, searchBoxQuery, handleSearchBoxSubmit };
+    const showMenu = ref(false);
+
+    const handleMenuClick = function () {
+      showMenu.value = !showMenu.value;
+    }
+
+    watch(showMenu, async (newVal) => {
+      if (newVal) {
+        document.body.style.overflow = "hidden";
+      } else {
+        document.body.style.overflow = "";
+      }
+    });
+
+    return { 
+      navbar, 
+      searchBoxQuery, 
+      handleSearchBoxSubmit,
+      showMenu,
+      handleMenuClick
+    };
   }
 });
 </script>
@@ -150,9 +169,6 @@ export default defineComponent({
   outline: none;
   font-size: 1rem;
 }
-.navbar--searchbox_input::placeholder {
-  color: #aaa;
-}
 .navbar--searchbox_icon {
   display: flex;
   align-items: center;
@@ -165,5 +181,17 @@ export default defineComponent({
 }
 .navbar--searchbox_icon:hover {
   transform: scale(1.05);
+}
+
+.navmenu--container {
+  position: fixed;
+  top: 12vh; /* this always needs to be adjusted based on the navbar width */
+  left: 0;
+  width: 100%;
+  height: calc(100vh - 12vh); /* this always needs to be adjusted based on the navbar width */
+  background: var(--fourth-color);
+  filter: brightness(60%);
+  overflow-y: auto;
+  opacity: 60%;
 }
 </style>
