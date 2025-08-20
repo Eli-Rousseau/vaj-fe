@@ -22,11 +22,31 @@
     </form>
   </div>
   <div ref="navmenu" class="navmenu--container" v-if="showMenu">
+    <div class="navmenu--parent_category">
+      <h5 @click="handleClickOnShwoMenuByCategory">
+        Shop By Category
+      </h5>
+      <div class="navmenu--sub_category" :class="{ 'navmenu--transition': showMenuShopByCategory }" v-show="showMenuShopByCategory">
+        <h6>All Clothing</h6>
+        <h6>Tops & Blouses</h6>
+        <h6>Dresses</h6>
+        <h6>Skirts</h6>
+        <h6>Jeans</h6>
+        <h6>Jackets</h6>
+        <h6>Sweaters & Cardigans</h6>
+        <h6>Shoes</h6>
+        <h6>Bags</h6>
+        <h6>Accesories</h6>
+      </div>
+    </div>
+    <h5 class="navmenu--parent_category">Likes</h5>
+    <h5 class="navmenu--parent_category">Account</h5>
+    <h5 class="navmenu--parent_category">Basket</h5>
   </div>
 </template>
 
 <script>
-import { defineComponent, ref, onMounted, onUnmounted, watch, nextTick } from 'vue';
+import { defineComponent, ref, onMounted, onUnmounted, watch } from 'vue';
 
 export default defineComponent({
   name: "NavigationBar",
@@ -119,12 +139,20 @@ export default defineComponent({
       }
     });
 
+    const showMenuShopByCategory = ref(false);
+
+    const handleClickOnShwoMenuByCategory = function() {
+      showMenuShopByCategory.value = !showMenuShopByCategory.value;
+    }
+
     return { 
       navbar, 
       searchBoxQuery, 
       handleSearchBoxSubmit,
       showMenu,
-      handleMenuClick
+      handleMenuClick,
+      showMenuShopByCategory,
+      handleClickOnShwoMenuByCategory
     };
   }
 });
@@ -192,6 +220,49 @@ export default defineComponent({
   background: var(--fourth-color);
   filter: brightness(60%);
   overflow-y: auto;
-  opacity: 60%;
+  opacity: 50%;
+}
+.navmenu--parent_category {
+  padding: 30px 10px;
+  margin: 0px;
+}
+.navmenu--parent_category:nth-child(even) {
+  background: var(--fourth-color);
+  filter: brightness(80%);
+}
+h5.navmenu--parent_category:hover {
+  color: var(--first-color);
+  cursor: pointer;
+}
+div.navmenu--parent_category {
+  margin: 0px;
+  padding: 0px;
+}
+div.navmenu--parent_category > h5 {
+  padding: 30px 10px;
+  margin: 0px;
+}
+div.navmenu--parent_category > h5:hover {
+  color: var(--first-color);
+  cursor: pointer;
+}
+div.navmenu--sub_category {
+  margin: 0px;
+  padding: 0px 0px 20px 0px;
+}
+div.navmenu--sub_category > h6 {
+  margin: 0px;
+  padding: 5px 15px;
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+div.navmenu--sub_category.navmenu--transition > h6 {
+  opacity: 1;
+  transform: translateY(0);
+}
+div.navmenu--sub_category > h6:hover {
+  color: var(--first-color);
+  cursor: pointer;
 }
 </style>
