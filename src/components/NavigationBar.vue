@@ -1,6 +1,14 @@
 <template>
   <div ref="navbar" class="navbar--container">
-    <svg width="24" height="24" viewBox="0 0 18 28" fill="none" xmlns="http://www.w3.org/2000/svg" class="navbar--dropdown" @click="handleMenuClick">
+    <svg 
+      width="24" 
+      height="24" 
+      viewBox="0 0 18 28" 
+      fill="none" 
+      xmlns="http://www.w3.org/2000/svg" 
+      class="navbar--dropdown" 
+      @click="handleMenuClick"
+    >
       <rect y="5" width="18" height="2" fill="var(--first-color)"/>
       <rect y="10" width="18" height="2" fill="var(--first-color)"/>
       <rect y="15" width="18" height="2" fill="var(--first-color)"/>
@@ -8,36 +16,57 @@
     </svg>
     <form class="navbar--searchbox" @submit.prevent="handleSearchBoxSubmit">
         <label for="search"></label>
-        <input type="text" id="search" autocomplete="off" class="navbar--searchbox_input" v-model="searchBoxQuery"/>
+        <input 
+          type="text" 
+          id="search" 
+          autocomplete="off" 
+          class="navbar--searchbox_input" 
+          v-model="searchBoxQuery"
+        />
         <button type="submit" class="navbar--searchbox_icon">
-            <svg width="34" height="34" viewBox="0 0 25 25" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                    fill-rule="evenodd"
-                    clip-rule="evenodd"
-                    d="M18.319 14.4326C20.7628 11.2941 20.542 6.75347 17.6569 3.86829C14.5327 0.744098 9.46734 0.744098 6.34315 3.86829C3.21895 6.99249 3.21895 12.0578 6.34315 15.182C9.22833 18.0672 13.769 18.2879 16.9075 15.8442C16.921 15.8595 16.9351 15.8745 16.9497 15.8891L21.1924 20.1317C21.5829 20.5223 22.2161 20.5223 22.6066 20.1317C22.9971 19.7412 22.9971 19.1081 22.6066 18.7175L18.364 14.4749C18.3493 14.4603 18.3343 14.4462 18.319 14.4326ZM16.2426 5.28251C18.5858 7.62565 18.5858 11.4246 16.2426 13.7678C13.8995 16.1109 10.1005 16.1109 7.75736 13.7678C5.41421 11.4246 5.41421 7.62565 7.75736 5.28251C10.1005 2.93936 13.8995 2.93936 16.2426 5.28251Z"
-                    fill="var(--fourth-color)"
-                />
+            <svg 
+              width="34" 
+              height="34" 
+              viewBox="0 0 25 25" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                  fill-rule="evenodd"
+                  clip-rule="evenodd"
+                  d="M18.319 14.4326C20.7628 11.2941 20.542 6.75347 17.6569 3.86829C14.5327 0.744098 9.46734 0.744098 6.34315 3.86829C3.21895 6.99249 3.21895 12.0578 6.34315 15.182C9.22833 18.0672 13.769 18.2879 16.9075 15.8442C16.921 15.8595 16.9351 15.8745 16.9497 15.8891L21.1924 20.1317C21.5829 20.5223 22.2161 20.5223 22.6066 20.1317C22.9971 19.7412 22.9971 19.1081 22.6066 18.7175L18.364 14.4749C18.3493 14.4603 18.3343 14.4462 18.319 14.4326ZM16.2426 5.28251C18.5858 7.62565 18.5858 11.4246 16.2426 13.7678C13.8995 16.1109 10.1005 16.1109 7.75736 13.7678C5.41421 11.4246 5.41421 7.62565 7.75736 5.28251C10.1005 2.93936 13.8995 2.93936 16.2426 5.28251Z"
+                  fill="var(--fourth-color)"
+              />
             </svg>
         </button>
     </form>
   </div>
-  <div ref="navmenu" class="navmenu--container" v-if="showMenu">
+  <div 
+    ref="navmenu" 
+    class="navmenu--container" 
+    v-if="showMenu"
+  >
     <div class="navmenu--parent_category">
-      <h5 @click="handleClickOnShwoMenuByCategory">
+      <h5 @click="handleClickOnShowMenuByCategory">
         Shop By Category
       </h5>
-      <div class="navmenu--sub_category" :class="{ 'navmenu--transition': showMenuShopByCategory }" v-show="showMenuShopByCategory">
-        <h6>All Clothing</h6>
-        <h6>Tops & Blouses</h6>
-        <h6>Dresses</h6>
-        <h6>Skirts</h6>
-        <h6>Jeans</h6>
-        <h6>Jackets</h6>
-        <h6>Sweaters & Cardigans</h6>
-        <h6>Shoes</h6>
-        <h6>Bags</h6>
-        <h6>Accesories</h6>
-      </div>
+      <transition name="fade-slide">
+        <div
+          v-show="showMenuShopByCategory"
+          class="navmenu--sub_category"
+        >
+          <h6>All Clothes</h6>
+          <h6>Tops & Blouses</h6>
+          <h6>Dresses</h6>
+          <h6>Skirts</h6>
+          <h6>Jeans</h6>
+          <h6>Jackets</h6>
+          <h6>Sweaters & Cardigans</h6>
+          <h6>Shoes</h6>
+          <h6>Bags</h6>
+          <h6>Accessories</h6>
+        </div>
+      </transition>
     </div>
     <h5 class="navmenu--parent_category">Likes</h5>
     <h5 class="navmenu--parent_category">Account</h5>
@@ -136,12 +165,13 @@ export default defineComponent({
         document.body.style.overflow = "hidden";
       } else {
         document.body.style.overflow = "";
+        showMenuShopByCategory.value = false;
       }
     });
 
     const showMenuShopByCategory = ref(false);
 
-    const handleClickOnShwoMenuByCategory = function() {
+    const handleClickOnShowMenuByCategory = function() {
       showMenuShopByCategory.value = !showMenuShopByCategory.value;
     }
 
@@ -152,7 +182,7 @@ export default defineComponent({
       showMenu,
       handleMenuClick,
       showMenuShopByCategory,
-      handleClickOnShwoMenuByCategory
+      handleClickOnShowMenuByCategory
     };
   }
 });
@@ -192,17 +222,18 @@ export default defineComponent({
 .navbar--searchbox_input {
   flex: 1;
   padding: 5px 10px;
-  width: auto;
   border: none;
   outline: none;
   font-size: 1rem;
+  height: 100%;
+  min-width: 0px;
 }
 .navbar--searchbox_icon {
   display: flex;
   align-items: center;
   justify-content: right;
   width: 3rem;
-  height: 3rem;
+  height: 100%;
   background: #fff;
   border: none;
   cursor: pointer;
@@ -253,16 +284,24 @@ div.navmenu--sub_category {
 div.navmenu--sub_category > h6 {
   margin: 0px;
   padding: 5px 15px;
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
-}
-div.navmenu--sub_category.navmenu--transition > h6 {
-  opacity: 1;
-  transform: translateY(0);
 }
 div.navmenu--sub_category > h6:hover {
   color: var(--first-color);
   cursor: pointer;
+}
+
+.fade-slide-enter-active,
+.fade-slide-leave-active {
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+.fade-slide-enter-from,
+.fade-slide-leave-to {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+.fade-slide-enter-to,
+.fade-slide-leave-from {
+  opacity: 1;
+  transform: translateY(0);
 }
 </style>
