@@ -1,33 +1,31 @@
 <template>
-  <div class="home__header--container">
-    <NavigationBar />
-  </div>
-  <div class="home__body--container"></div>
+  <NavBar/>
+  <div class="HomePage__header--container"></div>
+  <div class="HomePage__body--container"></div>
 </template>
 
 <script>
 import { defineComponent } from 'vue';
-import NavigationBar from '@/components/NavigationBar.vue';
+
+import NavBar from '@/components/NavBar.vue';
 
 export default defineComponent({
-  name: 'HomeHeader',
+  name: 'HomePage',
   components: {
-    NavigationBar
-  }
+    NavBar
+  },
 });
 </script>
 
 <style>
-.home__header--container {
-  width: 100vw;
-  height: 100vh;
+.HomePage__header--container {
+  width: 100lvw;
+  height: 100lvh;
   background-color: var(--second-color);
-  display: flex;
-  flex-direction: column;
 }
-.home__body--container {
-  width: 100vw;
-  height: 1000vh;
+.HomePage__body--container {
+  width: 100lvw;
+  height: 1000lvh;
   background-color: var(--third-color);
 }
 </style>
