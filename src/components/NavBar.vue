@@ -11,10 +11,10 @@
         <p>{{ numberOfUserArticlesInShoppingCart }}</p>
         <ShoppingCart class="NavBar__bar--icon"/>
       </div>
-      <SearchLoop class="NavBar__bar--icon"/>
-      <Cross class="NavBar__bar--icon"/>
     </div>
-    <div class="NavBar__menu--container" v-show="showNavMenu"></div>
+    <Transition name="NavBar__menu">
+      <div class="NavBar__menu--container" v-show="showNavMenu"></div>
+    </Transition>
   </div>
 </template>
 
@@ -42,6 +42,7 @@ export default defineComponent({
       showNavMenu.value = !showNavMenu.value;
 
       const body = document.body;
+
       if (showNavMenu.value) {
         body.style.overflow = "hidden";
         body.style.webkitOverflowScrolling = "touch";
@@ -49,7 +50,7 @@ export default defineComponent({
         body.style.overflow = "";
         body.style.webkitOverflowScrolling = "";
       }
-    }
+    };
 
     const { navbar } = useNavbarScroll();
 
@@ -113,5 +114,17 @@ export default defineComponent({
   filter: brightness(75%);
   opacity: 40%;
   z-index: 10;
+}
+.NavBar__menu-enter-active,
+.NavBar__menu-leave-active {
+  transition: max-height 0.4s ease;
+}
+.NavBar__menu-enter-from,
+.NavBar__menu-leave-to {
+  max-height: 0;
+}
+.NavBar__menu-enter-to,
+.NavBar__menu-leave-from {
+  max-height: 88vh;
 }
 </style>
