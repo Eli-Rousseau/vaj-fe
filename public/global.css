@@ -110,6 +110,8 @@ html:root {
   --second-color: #ffe0e0;
   --third-color: #ffc0d0;
   --fourth-color: #efdfbf;
+  --light-color: #fff;
+  --dark-color: #000;
   background-color: var(--first-color);
 }
 

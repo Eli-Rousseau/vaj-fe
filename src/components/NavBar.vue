@@ -13,23 +13,46 @@
       </div>
     </div>
     <Transition name="NavBar__menu">
-      <div class="NavBar__menu--container" v-show="showNavMenu"></div>
+      <div class="NavBar__menu--container" v-show="showNavMenu">
+        <div class="NavBar__SearchBox--container">
+          <SearchBox class="NavBar__SearchBox"/>
+        </div>
+        <div class="NavBar__menu--parent_category">
+          <h5 class="NavBar__menu--parent_category_text">Shop All</h5>
+          <ArrowTopRight class="NavBar__menu--parent_category_icon"/>
+        </div>
+        <div class="NavBar__menu--parent_category">
+          <h5 class="NavBar__menu--parent_category_text">Shop By Category</h5>
+          <ArrowTopRight class="NavBar__menu--parent_category_icon"/>
+        </div>
+        <div class="NavBar__menu--parent_category">
+          <h5 class="NavBar__menu--parent_category_text">Latest Release</h5>
+          <ArrowTopRight class="NavBar__menu--parent_category_icon"/>
+        </div>
+        <div class="NavBar__menu--parent_category">
+          <h5 class="NavBar__menu--parent_category_text">Sales</h5>
+          <ArrowTopRight class="NavBar__menu--parent_category_icon"/>
+        </div>
+      </div>
     </Transition>
   </div>
 </template>
 
 <script>
 import { defineComponent, ref } from 'vue';
-import { Cross, Heart, Home, Menu, SearchLoop, ShoppingCart } from '@/icons/index';
+import { ArrowTopRight, Cross, Heart, Home, Menu, SearchLoop, ShoppingCart } from '@/icons/index';
 import { useNavbarScroll } from '@/composables/navbar-scroll';
+import SearchBox from './SearchBox.vue';
 
 export default defineComponent({
   name: "NavBar",
   components: {
+    ArrowTopRight,
     Cross,
     Heart,
     Home,
     Menu,
+    SearchBox,
     SearchLoop,
     ShoppingCart
   },
@@ -110,9 +133,9 @@ export default defineComponent({
 .NavBar__menu--container {
   width: 100lvw;
   height: 88lvh;
-  background-color: var(--fourth-color);
-  filter: brightness(75%);
-  opacity: 40%;
+  background-color: color-mix(in srgb, var(--fourth-color) 50%, transparent);
+  display: flex;
+  flex-direction: column;
   z-index: 10;
 }
 .NavBar__menu-enter-active,
@@ -126,5 +149,27 @@ export default defineComponent({
 .NavBar__menu-enter-to,
 .NavBar__menu-leave-from {
   max-height: 88vh;
+}
+
+.NavBar__menu--parent_category {
+  margin: 0;
+  padding: 2rem 2rem;
+}
+.NavBar__menu--parent_category_text {
+  display: inline-block;
+  margin: 0;
+  padding-right: 0.8rem;
+}
+.NavBar__menu--parent_category_icon {
+  display: inline-block;
+  width: 1.2rem;
+  height: 1.2rem;
+  visibility: hidden;
+}
+.NavBar__menu--parent_category_text:hover {
+  cursor: pointer;
+}
+.NavBar__menu--parent_category_text:hover + .NavBar__menu--parent_category_icon {
+  visibility: visible;
 }
 </style>
